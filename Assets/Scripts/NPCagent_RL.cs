@@ -19,6 +19,8 @@ public class NPCagent_RL : Agent
     private Vector3 startPosition;
     private Vector3 startRotation;
 
+    private Vector3 lastDist;
+
     public override void Initialize()
     {
         carController = GetComponent<NPCCar>();
@@ -45,7 +47,12 @@ public class NPCagent_RL : Agent
     {
         sensor.AddObservation(carController.transform.localPosition);
         sensor.AddObservation(carController.GetComponent<Rigidbody>().velocity);
-        sensor.AddObservation(trackCheckpoints.toNext(transform));
+        Vector3 dist = trackCheckpoints.toNext(transform);
+        if (dist.magnitude < lastDist.magnitude)
+        {
+            AddReward(0.001f);
+        }
+        sensor.AddObservation(dist);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
