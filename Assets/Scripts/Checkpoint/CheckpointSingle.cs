@@ -16,7 +16,7 @@ public class CheckpointSingle : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "NPC Car")
+        if (other.GetComponent<NPCagent_RL>() != null)
         {
             trackCheckpoints.CarThroughCheckpoint(this, other.transform);
         }

@@ -1,0 +1,65 @@
+{
+    "NPCcar": {
+        "checkpoints": [
+            {
+                "steps": 3499707,
+                "file_path": "results\\NPCCarIL\\NPCcar\\NPCcar-3499707.onnx",
+                "reward": 241.3650023460388,
+                "creation_time": 1715134669.8424425,
+                "auxillary_file_paths": [
+                    "results\\NPCCarIL\\NPCcar\\NPCcar-3499707.pt"
+                ]
+            },
+            {
+                "steps": 3999527,
+                "file_path": "results\\NPCCarIL\\NPCcar\\NPCcar-3999527.onnx",
+                "reward": 269.7350000143051,
+                "creation_time": 1715137607.8910842,
+                "auxillary_file_paths": [
+                    "results\\NPCCarIL\\NPCcar\\NPCcar-3999527.pt"
+                ]
+            },
+            {
+                "steps": 4499344,
+                "file_path": "results\\NPCCarIL\\NPCcar\\NPCcar-4499344.onnx",
+                "reward": 229.2804946899414,
+                "creation_time": 1715140553.1222668,
+                "auxillary_file_paths": [
+                    "results\\NPCCarIL\\NPCcar\\NPCcar-4499344.pt"
+                ]
+            },
+            {
+                "steps": 4999505,
+                "file_path": "results\\NPCCarIL\\NPCcar\\NPCcar-4999505.onnx",
+                "reward": 226.10780334472656,
+                "creation_time": 1715143547.6255662,
+                "auxillary_file_paths": [
+                    "results\\NPCCarIL\\NPCcar\\NPCcar-4999505.pt"
+                ]
+            },
+            {
+                "steps": 5000183,
+                "file_path": "results\\NPCCarIL\\NPCcar\\NPCcar-5000183.onnx",
+                "reward": 226.03645740855825,
+                "creation_time": 1715143547.90617,
+                "auxillary_file_paths": [
+                    "results\\NPCCarIL\\NPCcar\\NPCcar-5000183.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000183,
+            "file_path": "results\\NPCCarIL\\NPCcar.onnx",
+            "reward": 226.03645740855825,
+            "creation_time": 1715143547.90617,
+            "auxillary_file_paths": [
+                "results\\NPCCarIL\\NPCcar\\NPCcar-5000183.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}

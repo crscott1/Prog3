@@ -1597,6 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carTransformList:
   - {fileID: 1849395957}
+  endEpisodes: 0
   agent: {fileID: 1849395959}
 --- !u!1001 &124033475
 PrefabInstance:
@@ -23827,6 +23828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carTransformList:
   - {fileID: 1849395957}
+  endEpisodes: 0
   agent: {fileID: 1849395959}
 --- !u!1001 &1813065399
 PrefabInstance:
@@ -24402,6 +24404,7 @@ GameObject:
   - component: {fileID: 1849395962}
   - component: {fileID: 1849395963}
   - component: {fileID: 1849395966}
+  - component: {fileID: 1849395967}
   m_Layer: 0
   m_Name: NPCCar
   m_TagString: Player
@@ -24515,6 +24518,7 @@ MonoBehaviour:
   steering: 0
   braking: 0
   trackCheckpoints: {fileID: 123980463}
+  closest: Infinity
 --- !u!114 &1849395960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24528,7 +24532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 9
+    VectorObservationSize: 3
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -24537,8 +24541,8 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 1
+  m_Model: {fileID: 5022602860645237092, guid: 6b67725b7a7e8374a94f64cdb97a34a0, type: 3}
+  m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: NPCcar
   TeamId: 0
@@ -24628,6 +24632,22 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
+--- !u!114 &1849395967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849395951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: Demo
+  DemonstrationDirectory: Demos
 --- !u!1001 &1850984103
 PrefabInstance:
   m_ObjectHideFlags: 0

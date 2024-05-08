@@ -16,10 +16,10 @@ public class NPCagent_RL : Agent
 
     public TrackCheckpoints trackCheckpoints;
 
+    public float closest = float.PositiveInfinity;
+
     private Vector3 startPosition;
     private Vector3 startRotation;
-
-    private Vector3 lastDist;
 
     public override void Initialize()
     {
@@ -39,19 +39,24 @@ public class NPCagent_RL : Agent
             carRigidbody.velocity = Vector3.zero; 
             carRigidbody.angularVelocity = Vector3.zero;
         }
+        trackCheckpoints.ResetCheck();
     }
 
     
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(carController.transform.localPosition);
-        sensor.AddObservation(carController.GetComponent<Rigidbody>().velocity);
         Vector3 dist = trackCheckpoints.toNext(transform);
-        if (dist.magnitude < lastDist.magnitude)
+        if (dist.magnitude < closest)
         {
-            AddReward(0.001f);
+            if (closest < float.PositiveInfinity)
+            {
+                float reward = 0.1f * (closest - dist.magnitude);
+                //AddReward(reward);
+            }
+            closest = dist.magnitude;
         }
+        AddReward(-0.001f);
         sensor.AddObservation(dist);
     }
 
@@ -59,9 +64,8 @@ public class NPCagent_RL : Agent
     {
         float throttle = actionBuffers.ContinuousActions[0];
         float steering = actionBuffers.ContinuousActions[1];
-        bool braking = actionBuffers.ContinuousActions[2] > 0;
+        bool braking = actionBuffers.ContinuousActions[2] > 0.5f;
 
-        AddReward(-0.001f);
         //Debug.Log($"OnActionReceived called with Throttle: {throttle}, Steering: {steering}, Braking: {braking}");
 
         carController.steerInput = steering;
@@ -80,8 +84,8 @@ public class NPCagent_RL : Agent
         //carController.SetInputs(horizontal, vertical, space);
 
         // Optionally, you can also populate the action buffer if you want to see these inputs reflected in the ML-Agents inspector
-        continuousActions[0] = vertical;   // moveInput
-        continuousActions[1] = horizontal; // steerInput
+        continuousActions[0] = vertical*0.75f;   // moveInput
+        continuousActions[1] = horizontal*1f; // steerInput
         continuousActions[2] = space ? 1.0f : 0f; // brakeInput
     }
 }
